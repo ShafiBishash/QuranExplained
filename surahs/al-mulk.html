@@ -3,17 +3,17 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Surah Al-Mulk | Quran Explained</title>
+    <title>Surah Al-Mulk | Quran Explained</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../Style.css">
+    <link rel="stylesheet" href="../Style.css">
 
 </head>
 
@@ -41,7 +41,7 @@
 
 <a href="../index.html">Home</a>
 
-<a href="../about.html">About</a>
+<a href="../index.html#about">About</a>
 
 </nav>
 
@@ -56,7 +56,9 @@
 <h2>Surah Al-Mulk</h2>
 
 <p>
+
 Surah 67 • 30 Verses
+
 </p>
 
 </div>
@@ -65,8 +67,7 @@ Surah 67 • 30 Verses
 
 <main class="container">
 
-<div class="verse-card">
-
+<div id="verses"></div>
 
 </main>
 
@@ -76,9 +77,85 @@ Surah 67 • 30 Verses
 
 <p>© 2026 Quran Explained</p>
 
+<p>Personal reflections intended to encourage thoughtful reading of the Qur'an.</p>
+
 </div>
 
 </footer>
+
+<script>
+
+fetch("../data/mulk.json")
+
+.then(response=>response.json())
+
+.then(reflections=>{
+
+const container=document.getElementById("verses");
+
+reflections.forEach(item=>{
+
+container.innerHTML+=`
+
+<div class="verse-card">
+
+<h2>Verse ${item.verse}</h2>
+
+<h3>${item.title}</h3>
+
+<a class="btn btn-primary"
+
+href="https://quran.com/67/${item.verse}"
+
+target="_blank">
+
+Read Verse ${item.verse} on Quran.com
+
+</a>
+
+<h3>Reflection</h3>
+
+<p>${item.reflection || "Reflection coming soon..."}</p>
+
+<h3>Life Application</h3>
+
+<p>${item.application || "Application coming soon..."}</p>
+
+<h3>Questions</h3>
+
+<ul>
+
+${item.questions.map(question=>`<li>${question}</li>`).join("")}
+
+</ul>
+
+<h3>Key Takeaways</h3>
+
+<ul>
+
+${item.takeaways.map(point=>`<li>${point}</li>`).join("")}
+
+</ul>
+
+</div>
+
+`;
+
+});
+
+})
+
+.catch(error=>{
+
+document.getElementById("verses").innerHTML=
+
+"<h2>Unable to load reflections.</h2>";
+
+console.error(error);
+
+});
+
+</script>
 
 <script src="../App.js"></script>
 

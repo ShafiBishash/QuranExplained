@@ -274,3 +274,54 @@ nav{
 }
 
 }
+/* Surah Page */
+
+.verse-card{
+
+background:white;
+
+padding:40px;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+margin:50px 0;
+
+}
+
+.verse-card h2{
+
+margin-bottom:20px;
+
+color:#14804A;
+
+}
+
+.verse-card h3{
+
+margin-top:30px;
+
+margin-bottom:10px;
+
+}
+
+.verse-card p{
+
+color:#555;
+
+line-height:1.8;
+
+}
+
+hr{
+
+border:none;
+
+height:1px;
+
+background:#ddd;
+
+margin:50px 0;
+
+}
